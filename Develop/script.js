@@ -21,6 +21,29 @@ if ((charlength >=8) && (charlength <= 128)){
   let useNumeric = confirm("Do you eant to use numbers?");
   let useSpecial = confirm("Do you want to use special charaters?");
 
+  //characters together
+  while (useLowerCase == false && useUpperCase == false && useNumeric == false && useSpecial == false) {
+    alert("Select one character");
+    useuseLowerCase = confirm("Do you want to use lowercase characters?");
+    useuseUpperCase = confirm("Do you want to use uppercase letters?");
+    useuseNumeric = confirm("Do you eant to use numbers?");
+    useuseSpecial = confirm("Do you want to use special charaters?");
+  }
+
+  let passwordLength = parseInt(prompt("choose password length. Choose the length between 8 to 128.")
+  while (passwordLength < 8 || passwordLength > 128 || typeof(passwordLength) !="number" || passwordLength ===NaN || passwordLength ===null) {
+    alert("Choose # between 8  to 128");
+    passwordLength=parseInt(prompt)
+  }
+
+
+  )
+
+
+
+
+
+
 }
 }
 
