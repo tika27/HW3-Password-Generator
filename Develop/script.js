@@ -8,8 +8,11 @@ var charlength = prompt ("how many words would you perfer for your new password?
 if ((charlength >=8) && (charlength <= 20)){
 
   let symbols = "!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~;
-  let numbers = "0,1,2,3,4,5,6,7,8,9";
-  let lowerCase = "a,b,c,d,"
+  let numbers = "0123456789";
+  let lowerCase = "abcdefghijklmonpqrstuvwxy";
+  let upperCase = "ABCDEFGHIJCLMOPQRSTUVQXYZ";
+  
+  let newPassword = "";
 }
 }
 
