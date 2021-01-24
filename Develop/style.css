@@ -6,7 +6,7 @@
 
 html,
 body,
-.wrapper {
+.container {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -15,12 +15,14 @@ body,
 body {
   font-family: sans-serif;
   background-color: #f9fbfd;
+  margin: 0;
 }
 
-.wrapper {
-  padding-top: 30px;
+.container {
+  padding-top: 50px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-left: 0;
 }
 
 header {
