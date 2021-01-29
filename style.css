@@ -14,7 +14,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: darkgoldenrod;
   margin: 0;
 }
 
@@ -28,15 +28,15 @@ body {
 header {
   text-align: center;
   padding: 20px;
-  padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  padding-top: 5px;
+  color: hsl(180, 3%, 8%);
 }
 
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
   border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  box-shadow: rgba(212, 37, 37, 0.15) 0px 2px 8px 0px;
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
@@ -92,7 +92,8 @@ header {
 
 button[disabled] {
   cursor: default;
-  background: #c0c7cf;
+  background: #2881e7;
+  color: green;
 }
 
 .float-right {
