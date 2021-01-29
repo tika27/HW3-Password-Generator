@@ -15,13 +15,18 @@
 var passwordEl = document.querySelector("#password");
 var btngenerateEl = document.querySelector("#generate");
 var btncopyEl = document.querySelector("#copy");
+var results="";
 
 //function for clicking on the button
 btngenerateEl.addEventListener("click", function () {
+    results="";
    
     //Prompt to create password length
     var charLength = prompt("How many characters would you like your new password to be? Pick a number between 8 and 128.");
+    while((charLength < 8) || (charLength > 128)){
+        var charLength = prompt("I am sorry please try again. How many characters would you like your new password to be? Pick a number between 8 and 128.");
 
+    }
     //Will run if password is choseen between 8 and 128;
     if ((charLength >= 8) && (charLength <= 128)) {
 
@@ -38,115 +43,141 @@ btngenerateEl.addEventListener("click", function () {
         let genNumbers = confirm("Select to use numbers?");
         let genLowerCase = confirm("Select to use lowercase letters?");
         let genUpperCase = confirm("Select to use uppercase letter?");
+        //if yes, add to my results
+        if(genSymbols){
+            results+=symbols;
+        }
 
-        //new characters together
-        var allCharacters = symbols + numbers + lowerCase + upperCase;
-        var a = lowerCase + numbers + lowerCase;
-        var b = symbols + lowerCase + upperCase;
-        var c = numbers + lowerCase + upperCase;
-        var d = symbols + lowerCase + upperCase;
-        var e = upperCase+ numbers;
-        var f = symbols + lowerCase;
-        var g = symbols + lowerCase;
-        var h = lowerCase + lowerCase + numbers;
-        var j = numbers + upperCase;
-        var k = lowerCase + upperCase;
+        if(genNumbers){
+            results+=numbers;
+        }
 
-        // combin/combination of passwords
-        if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * allCharacters.length);
-                newPassword += allCharacters.charAt(character, character + 1);
-            }
+        if(genLowerCase){
+            results+=lowerCase;
         }
-        else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * a.length);
-                newPassword += a.charAt(character, character + 1);
-            }
+        if(genUpperCase){
+            results+=upperCase
         }
-        else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * b.length);
-                newPassword += b.charAt(character, character + 1);
-            }
+        //once results are built.. create the pw with the length restrict and data from result
+        //console.log(results)
+        for (i = 0; i < charLength; i++) {
+            let character = Math.floor(Math.random() * results.length);
+            newPassword += results.charAt(character, character + 1);
         }
-        else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * c.length);
-                newPassword += c.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * d.length);
-                newPassword += d.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * e.length);
-                newPassword += e.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * f.length);
-                newPassword += f.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * g.length);
-                newPassword += g.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * h.length);
-                newPassword += h.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * j.length);
-                newPassword += j.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * k.length);
-                newPassword += k.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * symbols.length);
-                newPassword += symbols.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * numbers.length);
-                newPassword += numbers.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === false)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * lowerCase.length);
-                newPassword += lowerCase.charAt(character, character + 1);
-            }
-        }
-        else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === true)) {
-            for (i = 0; i < charLength; i++) {
-                let character = Math.floor(Math.random() * a.length);
-                newPassword += a.charAt(character, character + 1);
-            }
-        }
+        //console.log(newPassword)
+
+        // //new characters together
+        // var allCharacters = symbols + numbers + lowerCase + upperCase;
+        // var a = lowerCase + numbers + lowerCase;
+        // var b = symbols + lowerCase + upperCase;
+        // var c = numbers + lowerCase + upperCase;
+        // var d = symbols + lowerCase + upperCase;
+        // var e = upperCase+ numbers;
+        // var f = symbols + lowerCase;
+        // var g = symbols + lowerCase;
+        // var h = lowerCase + lowerCase + numbers;
+        // var j = numbers + upperCase;
+        // var k = lowerCase + upperCase;
+
+        // // combin/combination of passwords
+        // if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * allCharacters.length);
+        //         newPassword += allCharacters.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * a.length);
+        //         newPassword += a.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * b.length);
+        //         newPassword += b.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * c.length);
+        //         newPassword += c.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * d.length);
+        //         newPassword += d.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * e.length);
+        //         newPassword += e.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * f.length);
+        //         newPassword += f.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * g.length);
+        //         newPassword += g.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === true) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * h.length);
+        //         newPassword += h.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * j.length);
+        //         newPassword += j.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * k.length);
+        //         newPassword += k.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === true) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * symbols.length);
+        //         newPassword += symbols.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === true) && (genLowerCase === false) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * numbers.length);
+        //         newPassword += numbers.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === true) && (genUpperCase === false)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * lowerCase.length);
+        //         newPassword += lowerCase.charAt(character, character + 1);
+        //     }
+        // }
+        // else if ((genSymbols === false) && (genNumbers === false) && (genLowerCase === false) && (genUpperCase === true)) {
+        //     for (i = 0; i < charLength; i++) {
+        //         let character = Math.floor(Math.random() * a.length);
+        //         newPassword += a.charAt(character, character + 1);
+        //     }
+        // }
 
         //new password into text area
         passwordEl.textContent = newPassword;
     }
+    // else{
+    //     var charLength = prompt("I am sorry please try again. How many characters would you like your new password to be? Pick a number between 8 and 128.");
+
+    // }
 
 })
 
